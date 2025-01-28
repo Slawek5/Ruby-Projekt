@@ -1,0 +1,30 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :customer_id, "Klient", class: "form-label" %>
+    <%= form.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Wybierz klienta" }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :status, "Status zamówienia", class: "form-label" %>
+    <%= form.text_field :status, class: "form-control" %>
+
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :ordered_at, "Data zamówienia", class: "form-label" %>
+    <%= form.datetime_select :ordered_at, class: "form-select d-inline-block w-auto" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :shipped_at, "Data wysyłki", class: "form-label" %>
+    <%= form.datetime_select :shipped_at, class: "form-select d-inline-block w-auto" %>
+  </div>
+
+
+  <div class="mb-3">
+    <%= form.label :part_ids, "Wybierz części", class: "form-label" %><br>
+    <%= form.collection_select :part_ids, Part.all, :id, :title, {}, { multiple: true, class: "form-select", size: 5 } %>
+  </div>
+
+  <%= form.submit "Dodaj zamówienie", class: "btn btn-primary" %>
+<% end %>

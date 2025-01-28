@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title"><%= @customer.name %></h3>
+    <p><strong>Email:</strong> <%= @customer.email %></p>
+    <p><strong>Rola:</strong> <%= @customer.role %></p>
+    <p><strong>Telefon:</strong> <%= @customer.phone_number %></p>
+    <p><strong>Adres:</strong> <br><%= @customer.address %></p>
+
+    <hr>
+    <%= link_to "Edytuj", edit_customer_path(@customer), class: "btn btn-primary" %>
+    <%= link_to "Powrót", customers_path, class: "btn btn-secondary" %>
+  </div>
+</div>

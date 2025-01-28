@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sklep z częściami samochodowymi</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <%= javascript_importmap_tags %>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">Sklep z częściami</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to "Kategorie", categories_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Części", parts_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Producenci", manufacturers_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Klienci", customers_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Zamówienia", orders_path, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container my-4">
+
+  <% flash.each do |key, value| %>
+    <% bootstrap_class = case key.to_sym
+                         when :notice then 'success'
+                         when :alert  then 'danger'
+                         else 'info'
+                         end %>
+    <div class="alert alert-<%= bootstrap_class %> alert-dismissible fade show" role="alert">
+      <%= value %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+</body>
+</html>

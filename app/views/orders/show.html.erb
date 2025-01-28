@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Zamówienie nr <%= @order.id %></h3>
+    <p><strong>Klient:</strong> <%= @order.customer&.name %></p>
+    <p><strong>Status:</strong> <%= @order.status %></p>
+    <p><strong>Data zamówienia:</strong> <%= @order.ordered_at %></p>
+    <p><strong>Data wysyłki:</strong> <%= @order.shipped_at %></p>
+
+    <hr>
+
+    <h5>Części w zamówieniu:</h5>
+    <% if @order.parts.any? %>
+      <ul>
+        <% @order.parts.each do |part| %>
+          <li><%= part.title %> (<%= part.sku %>)</li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Brak części w tym zamówieniu.</p>
+    <% end %>
+
+    <hr>
+    <%= link_to "Edytuj", edit_order_path(@order), class: "btn btn-primary" %>
+    <%= link_to "Powrót", orders_path, class: "btn btn-secondary" %>
+  </div>
+</div>

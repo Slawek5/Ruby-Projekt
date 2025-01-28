@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="mb-0">Części</h1>
+  <%= link_to "Nowa część", new_part_path, class: "btn btn-primary" %>
+</div>
+
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table table-striped table-hover mb-0">
+      <thead class="table-dark">
+      <tr>
+        <th>Tytuł</th>
+        <th>SKU</th>
+        <th>Status</th>
+        <th>Kategoria</th>
+        <th class="text-end">Akcje</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @parts.each do |part| %>
+        <tr>
+          <td><%= link_to part.title, part %></td>
+          <td><%= part.sku %></td>
+          <td><%= part.status %></td>
+          <td><%= part.category&.name %></td>
+          <td class="text-end">
+            <%= link_to "Pokaż", part, class: "btn btn-sm btn-outline-secondary" %>
+            <%= link_to "Edytuj", edit_part_path(part), class: "btn btn-sm btn-outline-secondary" %>
+            <%= link_to "Usuń", part, method: :delete, data: { confirm: "Usunąć?" }, class: "btn btn-sm btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
