@@ -41,11 +41,7 @@ puts "=== SEED: Tworzenie producentów (Manufacturers)... ==="
 manu1 = Manufacturer.create!(name: "Bosch", description: "Producent systemów wtryskowych, świec i akumulatorów")
 manu2 = Manufacturer.create!(name: "Valeo", description: "Producent systemów oświetleniowych i chłodzenia")
 
-# Przykładowo, jeśli w modelu Part masz relację z Manufacturer (np. has_and_belongs_to_many :manufacturers
-# albo przez model pośredni Manufacturership), możesz tu dodać:
-# part1.manufacturers << manu1
-# part2.manufacturers << manu2
-# part3.manufacturers << [manu1, manu2]
+
 
 puts "=== SEED: Tworzenie klientów (Customers)... ==="
 cust1 = Customer.create!(
@@ -77,7 +73,7 @@ order2 = Order.create!(
   shipped_at: Time.now - 1.day
 )
 
-# Relacja has_and_belongs_to_many: przypisywanie części do zamówień
+
 order1.parts << part1
 order2.parts << [part1, part2]
 
